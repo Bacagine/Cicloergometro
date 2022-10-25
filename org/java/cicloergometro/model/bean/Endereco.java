@@ -24,8 +24,8 @@ public class Endereco{
 	}
 
 	public Endereco(String logradouro, String bairro, String CEP, 
-			 int numero, String cidade, String UF,
-			 String complemento){
+			        int numero, String cidade, String UF,
+			        String complemento){
 		this.setLogradouro(logradouro);
 		this.setBairro(bairro);
 		this.setCEP(CEP);

@@ -10,19 +10,19 @@ package org.java.cicloergometro.model.bean;
 public class ProfissionalDeSaude extends Pessoa{
 //	private int codProfissional;
 	
-	public void realizarCadastro(){
+	public ProfissionalDeSaude(){
 
 	}
 
-	public void alterarCadastro(){
-
+	public ProfissionalDeSaude(String nome, String CPF, char sexo){
+		super(nome, CPF, sexo);
 	}
 
-	public void excluirCadastro(){
-
+	public ProfissionalDeSaude(String login, String senha, String nome, String CPF, char sexo){
+		super(login, senha, nome, CPF, sexo);
 	}
 
-	public void cancelarConsulta(int codAgendamento){
-
+	public ProfissionalDeSaude(String login, String senha, String nome, String CPF, char sexo, String telefone, Endereco endereco){
+		super(login, senha, nome, CPF, sexo, telefone, endereco);
 	}
 }

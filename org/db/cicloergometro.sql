@@ -75,3 +75,13 @@ create table if not exists Paciente(
     foreign key(convenioID) references Convenio(convenioID)
 ) default charset = utf8;
 
+create table if not exists Agenda(
+	agendaID int,
+    dat ,
+    hora ,
+	primary key(agendaID);
+) default charset = utf8;
+
+create table if not exists Prontuario(
+
+) default charset = utf8;

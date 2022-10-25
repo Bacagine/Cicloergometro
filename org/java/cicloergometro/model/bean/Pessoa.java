@@ -14,7 +14,10 @@ import java.time.format.DateTimeFormatter;
 
 public abstract class Pessoa{
 	private int id;
+	private String login;
+	private String senha;
 	private String nome;
+	private String RG;
 	private String CPF;
 	private char sexo;
 	private double peso;
@@ -30,9 +33,34 @@ public abstract class Pessoa{
 	public Pessoa(){
 
 	}
-	
+
+	public Pessoa(String login, String senha, String nome, String CPF, char sexo){
+		this.setLogin(login);
+		this.setSenha(senha);
+		this.setNome(nome);
+		this.setCPF(CPF);
+		this.setSexo(sexo);
+	}
+
+	public Pessoa(String login, String senha, String nome, String CPF, char sexo, String telefone, Endereco endereco){
+		this.setLogin(login);
+		this.setSenha(senha);
+		this.setNome(nome);
+		this.setCPF(CPF);
+		this.setSexo(sexo);
+		this.setTelefone(telefone);
+		this.setEndereco(endereco);
+	}
+
+	public Pessoa(String nome, String CPF, char sexo){
+		this.setNome(nome);
+		this.setCPF(CPF);
+		this.setSexo(sexo);
+	}
+
 	public Pessoa(String nome, String RG, String CPF, char sexo, String telefone){
 		this.setNome(nome);
+		this.setRG(RG);
 		this.setCPF(CPF);
 		this.setSexo(sexo);
 		this.setTelefone(telefone);
@@ -165,8 +193,20 @@ public abstract class Pessoa{
 		return this.id;
 	}
 
+	private String getLogin(){
+		return this.login;
+	}
+
+	private String getSenha(){
+		return this.senha;
+	}
+
 	public String getNome(){
 		return this.nome;
+	}
+
+	public String getRG(){
+		return this.RG;
 	}
 
 	public String getCPF(){
@@ -215,8 +255,20 @@ public abstract class Pessoa{
 		this.id = id;
 	}
 
+	public void setLogin(String login){
+		this.login = login;
+	}
+
+	public void setSenha(String senha){
+		this.senha = senha;
+	}
+
 	public void setNome(String nome){
 		this.nome = nome;
+	}
+
+	public void setRG(String RG){
+		this.RG = RG;
 	}
 
 	public void setCPF(String CPF){
@@ -319,5 +371,22 @@ public abstract class Pessoa{
 		}
 		return idade;
 	}
-}
 
+
+
+	public void realizarCadastro(){
+
+	}
+
+	public void alterarCadastro(){
+
+	}
+
+	public void excluirCadastro(){
+
+	}
+
+	public void cancelarConsulta(int codAgendamento){
+
+	}
+}
