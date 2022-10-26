@@ -3,7 +3,7 @@
  * Desenvolvido por Gustavo Bacagine <gustavo.bacagine@gmail.com>
  * 
  * Data: 03/06/2022
- * Data da última modificação: 18/10/2022
+ * Data da última modificação: 25/10/2022
  */
 
 package org.java.cicloergometro.model.bean;

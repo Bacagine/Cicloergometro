@@ -4,6 +4,7 @@
  * Desenvolvido por Gustavo Bacagine <gustavo.bacagine@protonmail.com>
  * 
  * Data: 18/10/2022
+ * Data da última modificação: 25/10/2022
  */
 
 /* creando o banco de dados */
@@ -45,8 +46,6 @@ create table if not exists Medico(
 	telefone varchar(14),
 	email varchar(25),
 	dataNascimento date not null,
-	#vida boolean default true,
-	nacionalidade varchar(25) default 'Brasil',
     especialidade varchar(25) not null,
     primary key(cod_medico),
     foreign key(enderecoID) references Endereco(enderecoID)
@@ -112,8 +111,8 @@ create table if not exists Paciente(
 
 create table if not exists Agenda(
 	cod_agendamento int,
-    dat ,
-    hora ,
+    dat date,
+    hora timestamp default current_timestamp,
 	primary key(agendaID)
 ) default charset = utf8;
 
@@ -122,8 +121,8 @@ create table if not exists Prontuario(
 ) default charset = utf8;
 
 create table if not exists RelatorioAgendamento(
-	dat ,
-	hora ,
+	dat date,
+    hora timestamp default current_timestamp,
 	descricao varchar(51),
 	stat varchar(25)
 ) default charset = utf8;
