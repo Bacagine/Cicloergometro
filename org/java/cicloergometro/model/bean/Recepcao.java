@@ -1,5 +1,6 @@
 package org.java.cicloergometro.model.bean;
 
 public class Recepcao{
-    Recepcionista recepcionista;
+    private int recepcaoID;
+    private Recepcionista recepcionista;
 }

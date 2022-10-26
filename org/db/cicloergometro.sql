@@ -33,7 +33,7 @@ create table if not exists Endereco(
 
 /* Tabela que representa o medico */
 create table if not exists Medico(
-	medicoID int not null auto_increment,
+	cod_medico int not null auto_increment,
     enderecoID int,
 	nome varchar(50) not null,
     login varchar(8) not null,
@@ -48,19 +48,57 @@ create table if not exists Medico(
 	#vida boolean default true,
 	nacionalidade varchar(25) default 'Brasil',
     especialidade varchar(25) not null,
-    primary key(medicoID),
+    primary key(cod_medico),
+    foreign key(enderecoID) references Endereco(enderecoID)
+) default charset = utf8;
+/*
+create table if not exists Consulta(
+	data_consulta ;
+)
+*/
+/* Tabela que representa um enfermeiro */
+create table if not exists Enfermeiro(
+	cod_enfermeiro int not null auto_increment,
+    enderecoID int,
+	nome varchar(50) not null,
+    login varchar(8) not null,
+    passwd varchar(8) not null,
+	RG varchar(12) unique,
+	CPF varchar(14) unique not null,
+	sexo enum('M', 'F') not null,
+	telefone varchar(14),
+	email varchar(25),
+	dataNascimento date not null,
+	especialidade varchar(25) not null,
+    primary key(cod_enfermeiro),
+    foreign key(enderecoID) references Endereco(enderecoID)
+) default charset = utf8;
+
+/* Tabela que representa um fisioterapeuta */
+create table if not exists Fisioterapeuta(
+	cod_fisioterapeuta int not null auto_increment,
+    enderecoID int,
+	nome varchar(50) not null,
+    login varchar(8) not null,
+    passwd varchar(8) not null,
+	RG varchar(12) unique,
+	CPF varchar(14) unique not null,
+	sexo enum('M', 'F') not null,
+	telefone varchar(14),
+	email varchar(25),
+	dataNascimento date not null,
+	especialidade varchar(25) not null,
+    primary key(cod_fisioterapeuta),
     foreign key(enderecoID) references Endereco(enderecoID)
 ) default charset = utf8;
 
 /* Tabela representando o paciente */
 create table if not exists Paciente(
-	pacienteID int not null auto_increment,
+	cod_paciente int not null auto_increment,
     enderecoID int,
-    convenioID int,
-	nome varchar(50) not null,
+    nome varchar(50) not null,
     login varchar(8) not null,
     passwd varchar(8) not null,
-	RG varchar(12) unique,
 	CPF varchar(14) unique not null,
 	sexo enum('M', 'F') not null,
 	peso decimal(4, 2) not null,
@@ -68,20 +106,24 @@ create table if not exists Paciente(
 	telefone varchar(14) not null,
 	email varchar(25),
 	dataNascimento date not null,
-	#vida boolean default true,
-	nacionalidade varchar(25) default 'Brasil',
-    primary key(pacienteID),
-    foreign key(enderecoID) references Endereco(enderecoID),
-    foreign key(convenioID) references Convenio(convenioID)
+	primary key(cod_paciente),
+    foreign key(enderecoID) references Endereco(enderecoID)
 ) default charset = utf8;
 
 create table if not exists Agenda(
-	agendaID int,
+	cod_agendamento int,
     dat ,
     hora ,
-	primary key(agendaID);
+	primary key(agendaID)
 ) default charset = utf8;
 
 create table if not exists Prontuario(
 
+) default charset = utf8;
+
+create table if not exists RelatorioAgendamento(
+	dat ,
+	hora ,
+	descricao varchar(51),
+	stat varchar(25)
 ) default charset = utf8;
