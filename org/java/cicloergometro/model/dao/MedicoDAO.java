@@ -7,6 +7,12 @@
 
 package org.java.cicloergometro.model.dao;
 
+import org.java.cicloergometro.model.bean.Medico;
+
 public class MedicoDAO{
+
+    public boolean insertMedico(Medico medico) {
+        return false;
+    }
     
 }

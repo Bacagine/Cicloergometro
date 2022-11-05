@@ -193,11 +193,11 @@ public abstract class Pessoa{
 		return this.id;
 	}
 
-	private String getLogin(){
+	public String getLogin(){
 		return this.login;
 	}
 
-	private String getSenha(){
+	public String getSenha(){
 		return this.senha;
 	}
 

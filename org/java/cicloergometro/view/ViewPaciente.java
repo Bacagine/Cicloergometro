@@ -1,4 +1,4 @@
-/* ViewMedico.java: Tela principal do medico
+/* ViewPaciente.java: Tela principal do paciente
  * 
  * Desenvolvido por Gustavo Bacagine <gustavo.bacagine@protonmail.com>
  * 
@@ -9,14 +9,13 @@ package org.java.cicloergometro.view;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JButton;
 //import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 
-public class ViewMedico {
+public class ViewPaciente{
     private JFrame frame;
     private JPanel panel;
     private JButton btnConsultas;
@@ -27,13 +26,13 @@ public class ViewMedico {
     private static final int altura = 500;
     private static final int largura = 500;
 
-    public ViewMedico(){
-        frame = new JFrame(titulo);
-        
-        panel = new JPanel();
-        frame.add(panel);
+    public ViewPaciente(){
+        this.frame = new JFrame(titulo);
 
-        panel.setLayout(null);
+        this.panel = new JPanel();
+        this.frame.add(this.panel);
+
+        this.panel.setLayout(null);
 
         btnConsultas = new JButton("Minhas Consultas");
         btnConsultas.setBounds(150, 20, 200, 25);
@@ -41,7 +40,7 @@ public class ViewMedico {
             public void actionPerformed(ActionEvent e){
                 if(e.getSource() == btnConsultas){
                     frame.dispose();
-//                    new ViewConsultasMedico();
+//                    new ViewConsultasPaciente();
                 }
             }
         });
@@ -53,7 +52,7 @@ public class ViewMedico {
             public void actionPerformed(ActionEvent e){
                 if(e.getSource() == btnExames){
                     frame.dispose();
-//                    new ViewExamesMedico();
+//                    new ViewExamesPaciente();
                 }
             }
         });
@@ -65,7 +64,7 @@ public class ViewMedico {
             public void actionPerformed(ActionEvent e){
                 if(e.getSource() == btnMinhaConta){
                     frame.dispose();
-                    new ViewContaMedico();
+                    new ViewContaPaciente();
                 }
             }
         });
@@ -82,9 +81,10 @@ public class ViewMedico {
         });
         this.panel.add(btnSair);
 
-        frame.setSize(largura, altura);
-        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        frame.setLocationRelativeTo(null);
-        frame.setVisible(true);
+        this.frame.setSize(largura, altura);
+        this.frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        this.frame.setLocationRelativeTo(null);
+        this.frame.setVisible(true);
     }
+
 }

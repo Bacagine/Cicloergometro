@@ -7,8 +7,10 @@
 
 package org.java.cicloergometro.model.bean;
 
+import org.java.cicloergometro.view.ViewMain;
+
 public class Main{
 	public static void main(String args[]){
-		
+		new ViewMain();
 	}
 }
