@@ -3,7 +3,7 @@
  * Desenvolvido por Gustavo Bacagine <gustavo.bacagine@gmail.com>
  * 
  * Data: 03/06/2022
- * Data da última modificação: 25/10/2022
+ * Data da última modificação: 07/11/2022
  */
 
 package org.java.cicloergometro.model.bean;
@@ -32,6 +32,11 @@ public abstract class Pessoa{
 	/* Construtores */
 	public Pessoa(){
 
+	}
+	
+	public Pessoa(String nome, String CPF){
+		this.setNome(nome);
+		this.setCPF(CPF);
 	}
 
 	public Pessoa(String login, String senha, String nome, String CPF, char sexo){
@@ -186,6 +191,13 @@ public abstract class Pessoa{
 		this.setEndereco(endereco);
 		this.setEmail(email);
 		this.setDataNascimento(dataNascimento);
+	}
+
+	public Pessoa(String login, String senha, String nome, String CPF) {
+		this.setLogin(login);
+		this.setSenha(senha);
+		this.setNome(nome);
+		this.setCPF(CPF);
 	}
 
 	/* Getters */

@@ -2,7 +2,7 @@
  * 
  * Desenvolvido por Gustavo Bacagine <gustavo.bacagine@protonmail.com>
  * 
- * Data da última modificação: 17/06/2022
+ * Data da última modificação: 07/11/2022
  */
 
 package org.java.cicloergometro.model.dao;
@@ -49,8 +49,8 @@ public class ConsultaDAO{
     public boolean insertConsulta(Consulta consulta){
         try {
             String sql = "insert into Consulta(medico, paciente, data, hora, especializacaoMedica, endereco)" + 
-            " values(" + consulta.getID() + ", '" + consulta.getMedico() + "', '" + consulta.getPaciente() +
-            "', '" + consulta.getData() + "', '" + consulta.getHora() + "', '" + consulta.getEspecializacaoMedica() +
+            " values(" + consulta.getCodConsulta() + ", '" + consulta.getFisioterapeuta() + "', '" + consulta.getPaciente() +
+            "', '" + consulta.getData() + "', '" + consulta.getHora() + "', '" + /*consulta.getEspecializacaoMedica() +*/
             "', '" + consulta.getEndereco() + "');\n";
             this.stmt = con.prepareStatement(sql);
             this.stmt.executeUpdate(sql);
@@ -66,12 +66,12 @@ public class ConsultaDAO{
      * banco de dados */
     public boolean editConsulta(Consulta consulta){
         try {
-            String sql = "update Consulta set medico = " + consulta.getMedico() + " where consultaID = " + consulta.getID();
-            sql += "update Consulta set paciente = " + consulta.getPaciente() + " where consultaID = " + consulta.getID();
-            sql += "update Consulta set data = " + consulta.getData() + " where consultaID = " + consulta.getID();
-            sql += "update Consulta set hora = " + consulta.getHora() + " where consultaID = " + consulta.getID();
-            sql += "update Consulta set especializacaoMedica = " + consulta.getEspecializacaoMedica() + "where consultaID = " + consulta.getID();
-            sql += "update Consulta set endereco = " + consulta.getEndereco() + "where consultaID = " + consulta.getID();
+            String sql = "update Consulta set medico = " + consulta.getFisioterapeuta() + " where consultaID = " + consulta.getCodConsulta();
+            sql += "update Consulta set paciente = " + consulta.getPaciente() + " where consultaID = " + consulta.getCodConsulta();
+            sql += "update Consulta set data = " + consulta.getData() + " where consultaID = " + consulta.getCodConsulta();
+            sql += "update Consulta set hora = " + consulta.getHora() + " where consultaID = " + consulta.getCodConsulta();
+//            sql += "update Consulta set especializacaoMedica = " + consulta.getEspecializacaoMedica() + "where consultaID = " + consulta.getCodConsulta();
+            sql += "update Consulta set endereco = " + consulta.getEndereco() + "where consultaID = " + consulta.getCodConsulta();
             this.stmt = con.prepareStatement(sql);
             this.stmt.executeUpdate(sql);
 

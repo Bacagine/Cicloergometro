@@ -5,17 +5,17 @@
  * Data da última modificação: 16/06/2022
  */
 
-/*  voltar new ViewCastroMedico(medico, endereco) */
+/*  voltar new ViewCastroFisioterapeuta(fisioterapeuta, endereco) */
 
 package org.java.cicloergometro.view;
 
 import org.java.cicloergometro.model.bean.Consulta;
 import org.java.cicloergometro.model.bean.Endereco;
-import org.java.cicloergometro.model.bean.Medico;
+import org.java.cicloergometro.model.bean.Fisioterapeuta;
 import org.java.cicloergometro.model.bean.Paciente;
 import org.java.cicloergometro.model.dao.ConsultaDAO;
 import org.java.cicloergometro.model.dao.EnderecoDAO;
-import org.java.cicloergometro.model.dao.MedicoDAO;
+import org.java.cicloergometro.model.dao.FisioterapeutaDAO;
 import org.java.cicloergometro.model.dao.PacienteDAO;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -101,7 +101,7 @@ public class ViewCadastroEndereco{
         frame.setVisible(true);
     }
 
-    public ViewCadastroEndereco(Medico medico){
+    public ViewCadastroEndereco(Fisioterapeuta fisioterapeuta){
         frame = new JFrame(titulo);
 
         panel = new JPanel();
@@ -126,21 +126,21 @@ public class ViewCadastroEndereco{
                                                          txtCEP.getText(), Integer.parseInt(txtNumero.getText()),
                                                          txtCidade.getText(), String.valueOf(boxUF.getSelectedItem()),
                                                          txtComplemento.getText());
-                        medico.setEndereco(endereco);
-                        MedicoDAO medicoDAO = new MedicoDAO();
-                        if(!medicoDAO.insertMedico(medico)){
+                        fisioterapeuta.setEndereco(endereco);
+/*                        FisioterapeutaDAO fisioterapeutaDAO = new FisioterapeutaDAO();
+                        if(!fisioterapeutaDAO.insertFisioterapeuta(fisioterapeuta)){
                             JOptionPane.showMessageDialog(null, "Erro: Não foi possivel realizar o cadastro", "ERRO!", JOptionPane.ERROR_MESSAGE);
                         }
                         else{
-                            JOptionPane.showMessageDialog(null, "Medico Cadastrado");
-                        }
+                            JOptionPane.showMessageDialog(null, "Fisioterapeuta Cadastrado");
+                        }*/
                     }
                 }
             }
         });
         panel.add(btnCadastrar);
 
-        voltarCadastroMedico(medico);
+        voltarCadastroFisioterapeuta(fisioterapeuta);
 
         frame.setSize(largura, altura);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -148,7 +148,7 @@ public class ViewCadastroEndereco{
         frame.setVisible(true);
     }
 
-    public ViewCadastroEndereco(Medico medico, Endereco endereco){
+    public ViewCadastroEndereco(Fisioterapeuta fisioterapeuta, Endereco endereco){
         frame = new JFrame(titulo);
 
         panel = new JPanel();
@@ -159,11 +159,11 @@ public class ViewCadastroEndereco{
         printForm();
         this.txtRua.setText(endereco.getLogradouro());
         this.txtNumero.setText(String.valueOf(endereco.getNumero()));
-        this.txtComplemento.setText(endereco.getComplemento());
+//        this.txtComplemento.setText(endereco.getComplemento());
         this.txtBairro.setText(endereco.getBairro());
         this.txtCidade.setText(endereco.getCidade());
-        this.boxUF.setSelectedItem(endereco.getUF());
-        this.txtCEP.setText(endereco.getCEP());
+//        this.boxUF.setSelectedItem(endereco.getUF());
+//        this.txtCEP.setText(endereco.getCEP());
 
         btnCadastrar = new JButton("Cadastrar");
         btnCadastrar.setBounds(640, 690, 110, 25);
@@ -180,21 +180,21 @@ public class ViewCadastroEndereco{
                                                          txtCEP.getText(), Integer.parseInt(txtNumero.getText()),
                                                          txtCidade.getText(), String.valueOf(boxUF.getSelectedItem()),
                                                          txtComplemento.getText());
-                        medico.setEndereco(endereco);
-                        MedicoDAO medicoDAO = new MedicoDAO();
-                        if(!medicoDAO.insertMedico(medico)){
+                        fisioterapeuta.setEndereco(endereco);
+/*                        FisioterapeutaDAO fisioterapeutaDAO = new FisioterapeutaDAO();
+                        if(!fisioterapeutaDAO.insertFisioterapeuta(fisioterapeuta)){
                             JOptionPane.showMessageDialog(null, "Erro: Não foi possivel realizar o cadastro", "ERRO!", JOptionPane.ERROR_MESSAGE);
                         }
                         else{
-                            JOptionPane.showMessageDialog(null, "Medico Cadastrado");
-                        }
+                            JOptionPane.showMessageDialog(null, "Fisioterapeuta Cadastrado");
+                        }*/
                     }
                 }
             }
         });
         panel.add(btnCadastrar);
 
-        voltarCadastroMedico(medico);
+        voltarCadastroFisioterapeuta(fisioterapeuta);
 
         frame.setSize(largura, altura);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -270,7 +270,7 @@ public class ViewCadastroEndereco{
                             JOptionPane.showMessageDialog(null, "Erro: Não foi possivel realizar o cadastro", "ERRO!", JOptionPane.ERROR_MESSAGE);
                         }
                         else{
-                            JOptionPane.showMessageDialog(null, "Medico Cadastrado");
+                            JOptionPane.showMessageDialog(null, "Fisioterapeuta Cadastrado");
                         }
                     }
                 }
@@ -289,11 +289,11 @@ public class ViewCadastroEndereco{
         printForm();
         this.txtRua.setText(endereco.getLogradouro());
         this.txtNumero.setText(String.valueOf(endereco.getNumero()));
-        this.txtComplemento.setText(endereco.getComplemento());
+//        this.txtComplemento.setText(endereco.getComplemento());
         this.txtBairro.setText(endereco.getBairro());
         this.txtCidade.setText(endereco.getCidade());
-        this.boxUF.setSelectedItem(endereco.getUF());
-        this.txtCEP.setText(endereco.getCEP());
+//        this.boxUF.setSelectedItem(endereco.getUF());
+//        this.txtCEP.setText(endereco.getCEP());
 
         btnCadastrar = new JButton("Cadastrar");
         btnCadastrar.setBounds(640, 690, 110, 25);
@@ -316,7 +316,7 @@ public class ViewCadastroEndereco{
                             JOptionPane.showMessageDialog(null, "Erro: Não foi possivel realizar o cadastro", "ERRO!", JOptionPane.ERROR_MESSAGE);
                         }
                         else{
-                            JOptionPane.showMessageDialog(null, "Medico Cadastrado");
+                            JOptionPane.showMessageDialog(null, "Fisioterapeuta Cadastrado");
                         }
                     }
                 }
@@ -409,10 +409,10 @@ public class ViewCadastroEndereco{
         panel.add(txtCEP);
     }
 
-    /* Botão para voltar para a tela ViewCadastroMedico
+    /* Botão para voltar para a tela ViewCadastroFisioterapeuta
      * Esta função é usada para não perder os dados de endereço
      * já digitados no formulario */
-    private void voltarCadastroMedico(Medico medico){
+    private void voltarCadastroFisioterapeuta(Fisioterapeuta fisioterapeuta){
         btnVoltar = new JButton("Voltar");
         btnVoltar.setBounds(10, 690, 110, 25);
         btnVoltar.addActionListener(new ActionListener(){
@@ -424,7 +424,7 @@ public class ViewCadastroEndereco{
                                                      txtCEP.getText(), numero, txtCidade.getText(),
                                                      UF, txtComplemento.getText());
                     frame.dispose();
-                    new ViewCadastroMedico(medico, endereco);
+                    new ViewCadastroFisioterapeuta(fisioterapeuta, endereco);
                 }
             }
         });

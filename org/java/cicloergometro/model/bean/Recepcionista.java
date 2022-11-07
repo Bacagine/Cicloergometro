@@ -3,13 +3,14 @@
  * Desenvolvido por Gustavo Bacagine <gustavo.bacagine@protonmail.com> 
  * 
  * Data: 18/10/2022
- * Data da última modificação: 25/10/2022
+ * Data da última modificação: 07/11/2022
  */
 
 package org.java.cicloergometro.model.bean;
 
 public class Recepcionista extends Pessoa{
     private int codRecepcionista;
+    private Recepcao recepcao;
 
     public Recepcionista(){
 
@@ -29,8 +30,9 @@ public class Recepcionista extends Pessoa{
 
     @Override
     public String toString(){
-        String aux = "Cod.: " + this.getCodRecepcionista();
-        aux += "Nome: " + this.getNome();
+        String aux = "Cod....: " + this.getCodRecepcionista();
+        aux += "Nome....: " + this.getNome();
+        aux += "\nRecepcao: " + this.recepcao.getCodRecepcao();
 
         return aux;
     }

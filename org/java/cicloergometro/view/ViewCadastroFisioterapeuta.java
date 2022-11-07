@@ -1,4 +1,4 @@
-/* ViewAdmin.java: Tela para cadastrar medicos
+/* ViewAdmin.java: Tela para cadastrar fisioterapeutas
  * 
  * Desenvolvido por Gustavo Bacagine <gustavo.bacagine@protonmail.com>
  * 
@@ -27,10 +27,10 @@ import javax.swing.WindowConstants;
 import javax.swing.text.MaskFormatter;
 
 import org.java.cicloergometro.model.bean.Endereco;
-import org.java.cicloergometro.model.bean.Medico;
+import org.java.cicloergometro.model.bean.Fisioterapeuta;
 import org.java.cicloergometro.model.bean.Pessoa;
 
-public class ViewCadastroMedico{
+public class ViewCadastroFisioterapeuta{
     private JFrame frame;
     private JPanel panel;
     private JButton btnVoltar;
@@ -58,7 +58,7 @@ public class ViewCadastroMedico{
     private JTextField txtCRM;
     private JComboBox<String> boxEspecialidade;
     private ButtonGroup grupo;
-    private static final String titulo = "Cadastro Medico";
+    private static final String titulo = "Cadastro Fisioterapeuta";
     private static final int altura = 760;
     private static final int largura = 760;
     private static final String especialidades[] = { "-- selecione --", "Imunologista",
@@ -67,7 +67,7 @@ public class ViewCadastroMedico{
                                                      "Gastronomista", "Infectologista", "Neurologista",
                                                      "Pediatra", "Toxicologista", "Reumatologista" };
     
-    public ViewCadastroMedico(){
+    public ViewCadastroFisioterapeuta(){
         initWindow();
 
         printForm();
@@ -77,10 +77,10 @@ public class ViewCadastroMedico{
         finalWindow();
     }
 
-    public ViewCadastroMedico(Medico medico, Endereco endereco){
+    public ViewCadastroFisioterapeuta(Fisioterapeuta fisioterapeuta, Endereco endereco){
         initWindow();
 
-        printForm(medico);
+        printForm(fisioterapeuta);
         proximo(endereco);
         voltar();
 
@@ -227,12 +227,12 @@ public class ViewCadastroMedico{
      * volta da tela de cadastro de endereços.
      * Neste metodo, os dados já inseridos
      * anteriormente permanecem */
-    private void printForm(Medico medico){
+    private void printForm(Fisioterapeuta fisioterapeuta){
         lblNome = new JLabel("Nome:* ");
         lblNome.setBounds(10, 20, 80, 25);
         panel.add(lblNome);
 
-        txtNome = new JTextField(medico.getNome());
+        txtNome = new JTextField(fisioterapeuta.getNome());
         txtNome.setBounds(90, 20, 165, 25);
         panel.add(txtNome);
 
@@ -240,7 +240,7 @@ public class ViewCadastroMedico{
         lblLogin.setBounds(260, 20, 165, 25);
         panel.add(lblLogin);
 
-        txtLogin = new JTextField(medico.getLogin());
+        txtLogin = new JTextField(fisioterapeuta.getLogin());
         txtLogin.setBounds(320, 20, 165, 25);
         panel.add(txtLogin);
 
@@ -248,7 +248,7 @@ public class ViewCadastroMedico{
         lblPassword.setBounds(505, 20, 165, 25);
         panel.add(lblPassword);
 
-        txtPassword = new JPasswordField(medico.getSenha());
+        txtPassword = new JPasswordField(fisioterapeuta.getSenha());
         txtPassword.setBounds(570, 20, 165, 25);
         panel.add(txtPassword);
 
@@ -256,7 +256,7 @@ public class ViewCadastroMedico{
         lblRG.setBounds(10, 60, 80, 25);
         panel.add(lblRG);
 
-        txtRG = new JFormattedTextField(medico.getRG());
+        txtRG = new JFormattedTextField(fisioterapeuta.getRG());
         try {
             MaskFormatter rgMask = new MaskFormatter("##.###.###-#");
             rgMask.install(txtRG);
@@ -270,7 +270,7 @@ public class ViewCadastroMedico{
         lblCPF.setBounds(260, 60, 165, 25);
         panel.add(lblCPF);
 
-        txtCPF = new JFormattedTextField(medico.getCPF());
+        txtCPF = new JFormattedTextField(fisioterapeuta.getCPF());
         try {
             MaskFormatter cpfMask = new MaskFormatter("###.###.###-##");
             cpfMask.install(txtCPF);
@@ -279,20 +279,20 @@ public class ViewCadastroMedico{
         }
         txtCPF.setBounds(320, 60, 165, 25);
         panel.add(txtCPF);
-
+/*
         lblCRM = new JLabel("CRM:* ");
         lblCRM.setBounds(505, 60, 165, 25);
         panel.add(lblCRM);
 
-        txtCRM = new JTextField(medico.getCRM());
+        txtCRM = new JTextField(fisioterapeuta.getCRM());
         txtCRM.setBounds(570, 60, 165, 25);
         panel.add(txtCRM);
-        
+*/        
         lblTelefone = new JLabel("Telefone*: ");
         lblTelefone.setBounds(10, 90, 500, 25);
         panel.add(lblTelefone);
 
-        txtTelefone = new JFormattedTextField(medico.getTelefone());
+        txtTelefone = new JFormattedTextField(fisioterapeuta.getTelefone());
         try {
             MaskFormatter telefoneMask = new MaskFormatter("(##) ####-####");
             telefoneMask.install(txtTelefone);
@@ -306,8 +306,8 @@ public class ViewCadastroMedico{
         lblSexo.setBounds(360, 90, 165, 25);
         panel.add(lblSexo);
 
-        if(medico.getSexo() == 'M'){
-            optM = new JRadioButton(String.valueOf(medico.getSexo()), true);
+        if(fisioterapeuta.getSexo() == 'M'){
+            optM = new JRadioButton(String.valueOf(fisioterapeuta.getSexo()), true);
             optM.setBounds(420, 90, 40, 25);
             panel.add(optM);
 
@@ -320,7 +320,7 @@ public class ViewCadastroMedico{
             optM.setBounds(420, 90, 40, 25);
             panel.add(optM);
 
-            optF = new JRadioButton(String.valueOf(medico.getSexo()), true);
+            optF = new JRadioButton(String.valueOf(fisioterapeuta.getSexo()), true);
             optF.setBounds(480, 90, 40, 25);
             panel.add(optF);
         }
@@ -331,10 +331,10 @@ public class ViewCadastroMedico{
         lblEspecialidade = new JLabel("Especialidade:* ");
         lblEspecialidade.setBounds(10, 120, 165, 25);
         panel.add(lblEspecialidade);
-
+/*
         String especialidade = null;
         for(int count = 0; count < especialidades.length; count++){
-            if(medico.getEspecialidade() == especialidades[count]){
+            if(fisioterapeuta.getEspecialidade() == especialidades[count]){
                 especialidade = especialidades[count];
             }
         }
@@ -342,13 +342,13 @@ public class ViewCadastroMedico{
         boxEspecialidade.setSelectedItem(especialidade);
         boxEspecialidade.setBounds(135, 120, 165, 25);
         panel.add(boxEspecialidade);
-
+*/
         lblDataNascimento = new JLabel("Data de nascimento*: ");
         lblDataNascimento.setBounds(320, 120, 165, 25);
         panel.add(lblDataNascimento);
 
         this.txtDataNascimento = new JFormattedTextField();
-//        this.txtDataNascimento = new JFormattedTextField(String.valueOf(medico.getDataNascimento()));
+//        this.txtDataNascimento = new JFormattedTextField(String.valueOf(fisioterapeuta.getDataNascimento()));
         try {
             MaskFormatter dataNascimentoMask = new MaskFormatter("##/##/####");
 //            MaskFormatter dataNascimentoMask = new MaskFormatter("####-##-##");
@@ -357,7 +357,7 @@ public class ViewCadastroMedico{
             e.printStackTrace();
         }
         this.txtDataNascimento.setBounds(480, 120, 165, 25);
-        this.txtDataNascimento.setText(medico.getDataNascimento().format(Pessoa.BRAZZILIAN_FORMATTER));
+        this.txtDataNascimento.setText(fisioterapeuta.getDataNascimento().format(Pessoa.BRAZZILIAN_FORMATTER));
         panel.add(txtDataNascimento);
     }
 
@@ -375,15 +375,15 @@ public class ViewCadastroMedico{
                         JOptionPane.showMessageDialog(null, "Erro: cheque os campos obrigatorios!", "ERRO!", JOptionPane.ERROR_MESSAGE);
                     }
                     else{
-                        Medico medico = new Medico();
+                        Fisioterapeuta fisioterapeuta = new Fisioterapeuta();
                         String dataNascimento = Pessoa.converteData(txtDataNascimento.getText());
                         char sexo = optM.isSelected() ? optM.getText().charAt(0) : optF.getText().charAt(0);
-                        String especialidade = String.valueOf(boxEspecialidade.getSelectedItem());
-/*                        medico = new Medico(txtLogin.getText(), String.valueOf(txtPassword.getPassword()),
+//                        String especialidade = String.valueOf(boxEspecialidade.getSelectedItem());
+/*                        fisioterapeuta = new Fisioterapeuta(txtLogin.getText(), String.valueOf(txtPassword.getPassword()),
                                                 txtNome.getText(), txtRG.getText(), txtCPF.getText(), sexo,
                                                 LocalDate.parse(dataNascimento), txtTelefone.getText(), txtCRM.getText(), especialidade);*/
                         frame.dispose();
-                        new ViewCadastroEndereco(medico);
+                        new ViewCadastroEndereco(fisioterapeuta);
                     }
                 }
             }
@@ -409,15 +409,15 @@ public class ViewCadastroMedico{
                         JOptionPane.showMessageDialog(null, "Erro: cheque os campos obrigatorios!", "ERRO!", JOptionPane.ERROR_MESSAGE);
                     }
                     else{
-                        Medico medico = new Medico();
+                        Fisioterapeuta fisioterapeuta = new Fisioterapeuta();
                         String dataNascimento = Pessoa.converteData(txtDataNascimento.getText());
                         char sexo = optM.isSelected() ? optM.getText().charAt(0) : optF.getText().charAt(0);
-                        String especialidade = String.valueOf(boxEspecialidade.getSelectedItem());
-/*                        medico = new Medico(txtLogin.getText(), String.valueOf(txtPassword.getPassword()),
+//                        String especialidade = String.valueOf(boxEspecialidade.getSelectedItem());
+/*                        fisioterapeuta = new Fisioterapeuta(txtLogin.getText(), String.valueOf(txtPassword.getPassword()),
                                             txtNome.getText(), txtRG.getText(), txtCPF.getText(), sexo,
                                             LocalDate.parse(dataNascimento), txtTelefone.getText(), txtCRM.getText(), especialidade);*/
                         frame.dispose();
-                        new ViewCadastroEndereco(medico, endereco);
+                        new ViewCadastroEndereco(fisioterapeuta, endereco);
                     }
                 }
             }

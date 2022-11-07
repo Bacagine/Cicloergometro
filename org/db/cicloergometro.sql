@@ -1,128 +1,100 @@
-/* clinicaMedica.sql: Script para a criação do banco de dados
- * para uma clinica medica
+/* cicloergometro.sql: Script para a criação do banco de dados
+ * do cicloergometro
  * 
- * Desenvolvido por Gustavo Bacagine <gustavo.bacagine@protonmail.com>
+ * Desenvolvedores: Gustavo Bacagine <gustavo.bacagine@protonmail.com>
+ *                  Adrian
  * 
  * Data: 18/10/2022
- * Data da última modificação: 25/10/2022
+ * Data da última modificação: 07/11/2022
  */
 
+-- Geração de Modelo físico
+-- Sql ANSI 2003 - brModelo.
+
 /* creando o banco de dados */
-create database cicloergometro;
+CREATE DATABASE cicloergometro;
 
 /* usando o banco de dados */
-use cicloergometro;
+USE cicloergometro;
 
-/* Tabela que representa um endereço */
-create table if not exists Endereco(
-	enderecoID int not null auto_increment,
-	logradouro varchar(30) not null, # rua
-	bairro varchar(30) not null,
-	CEP varchar(9) not null,
-	numero int not null,
-	cidade varchar(15) not null,
-	UF enum('AC', 'AL', 'AP', 'AM',
-            'BA', 'CE', 'DF', 'ES',
-            'GO', 'MA', 'MT', 'MS',
-            'MG', 'PA', 'PB', 'PR',
-            'PE', 'PI', 'RJ', 'RN',
-            'RS', 'RO', 'RR', 'SC',
-            'SP', 'SE', 'TO') not null,
-	complemento varchar(20),
-    primary key(enderecoID)
-) default charset = utf8;
+CREATE TABLE IF NOT EXISTS Enfermeiro (
+    Cod_Enfermeiro int PRIMARY KEY auto_increment not null,
+    Especializacao Varchar(150) not null,
+    Cod_Profissional int
+) DEFAULT charset = utf8;
 
-/* Tabela que representa o medico */
-create table if not exists Medico(
-	cod_medico int not null auto_increment,
-    enderecoID int,
-	nome varchar(50) not null,
-    login varchar(8) not null,
-    passwd varchar(8) not null,
-	RG varchar(12) unique,
-	CPF varchar(14) unique not null,
-    CRM varchar(6) unique not null,
-	sexo enum('M', 'F') not null,
-	telefone varchar(14),
-	email varchar(25),
-	dataNascimento date not null,
-    especialidade varchar(25) not null,
-    primary key(cod_medico),
-    foreign key(enderecoID) references Endereco(enderecoID)
-) default charset = utf8;
-/*
-create table if not exists Consulta(
-	data_consulta ;
-)
-*/
-/* Tabela que representa um enfermeiro */
-create table if not exists Enfermeiro(
-	cod_enfermeiro int not null auto_increment,
-    enderecoID int,
-	nome varchar(50) not null,
-    login varchar(8) not null,
-    passwd varchar(8) not null,
-	RG varchar(12) unique,
-	CPF varchar(14) unique not null,
-	sexo enum('M', 'F') not null,
-	telefone varchar(14),
-	email varchar(25),
-	dataNascimento date not null,
-	especialidade varchar(25) not null,
-    primary key(cod_enfermeiro),
-    foreign key(enderecoID) references Endereco(enderecoID)
-) default charset = utf8;
+CREATE TABLE IF NOT EXISTS Paciente (
+    CPF Varchar(11) not null,
+    Nome Varchar(150) not null,
+    Cod_Paciente int PRIMARY KEY  auto_increment not null,
+    Telefone Varchar(15) not null,
+    sexo Varchar(10)
+) DEFAULT charset = utf8;
 
-/* Tabela que representa um fisioterapeuta */
-create table if not exists Fisioterapeuta(
-	cod_fisioterapeuta int not null auto_increment,
-    enderecoID int,
-	nome varchar(50) not null,
-    login varchar(8) not null,
-    passwd varchar(8) not null,
-	RG varchar(12) unique,
-	CPF varchar(14) unique not null,
-	sexo enum('M', 'F') not null,
-	telefone varchar(14),
-	email varchar(25),
-	dataNascimento date not null,
-	especialidade varchar(25) not null,
-    primary key(cod_fisioterapeuta),
-    foreign key(enderecoID) references Endereco(enderecoID)
-) default charset = utf8;
+CREATE TABLE IF NOT EXISTS Relatorio_Acompanhamento (
+    Data date not null,
+    Prontuario int PRIMARY KEY auto_increment not null,
+    Hora time not null,
+    Descricao Varchar(250),
+    Status Varchar(100)
+) DEFAULT charset = utf8;
 
-/* Tabela representando o paciente */
-create table if not exists Paciente(
-	cod_paciente int not null auto_increment,
-    enderecoID int,
-    nome varchar(50) not null,
-    login varchar(8) not null,
-    passwd varchar(8) not null,
-	CPF varchar(14) unique not null,
-	sexo enum('M', 'F') not null,
-	peso decimal(4, 2) not null,
-	altura decimal(3, 2) not null,
-	telefone varchar(14) not null,
-	email varchar(25),
-	dataNascimento date not null,
-	primary key(cod_paciente),
-    foreign key(enderecoID) references Endereco(enderecoID)
-) default charset = utf8;
+CREATE TABLE IF NOT EXISTS Agenda (
+    Cod_agendamento int PRIMARY KEY auto_increment not null,
+    Data Date,
+    Hora Time,
+    Retorno Varchar(50),
+    Cod_Paciente int,
+    Cod_Recepcao int,
+    FOREIGN KEY(Cod_Paciente) REFERENCES Paciente (Cod_Paciente)
+) DEFAULT charset = utf8;
 
-create table if not exists Agenda(
-	cod_agendamento int,
-    dat date,
-    hora timestamp default current_timestamp,
-	primary key(agendaID)
-) default charset = utf8;
+CREATE TABLE IF NOT EXISTS Recepcao (
+    Cod_Recepcao int PRIMARY KEY auto_increment not null,
+    Nome_Recepcionista Varchar(150),
+    Cod_Recepcionista int
+) DEFAULT charset = utf8;
 
-create table if not exists Prontuario(
+CREATE TABLE IF NOT EXISTS Fisioterapetuta (
+    Cod_Fisioterapeuta int PRIMARY KEY auto_increment not null,
+    Especializacao Varchar(150),
+    Cod_Profissional int
+) DEFAULT charset = utf8;
 
-) default charset = utf8;
+CREATE TABLE IF NOT EXISTS Profissional_Saude (
+    Nome Varchar(150),
+    Cod_Profissional int PRIMARY KEY auto_increment not null,
+    Cod_Recepcao int,
+    FOREIGN KEY(Cod_Recepcao) REFERENCES Recepcao (Cod_Recepcao)
+) DEFAULT charset = utf8;
 
-create table if not exists RelatorioAgendamento(
-	dat date,
-    hora timestamp default current_timestamp,
-	descricao varchar(51),
-	stat varchar(25)
-) default charset = utf8;
+CREATE TABLE IF NOT EXISTS Endereco (
+    Cod_Endereco int PRIMARY KEY auto_increment not null,
+    Logradouro Varchar(200) not null,
+    Numero Varchar(4) not null,
+    Cidade Varchar(150) not null,
+    Bairo Varchar(150) not null
+) DEFAULT charset = utf8;
+
+CREATE TABLE IF NOT EXISTS encaminha_monitoramento (
+    Cod_Profissional int,
+    Prontuario int,
+    Cod_Monitoramento int PRIMARY KEY auto_increment not null,
+    FOREIGN KEY(Cod_Profissional) REFERENCES Profissional_Saude (Cod_Profissional),
+    FOREIGN KEY(Prontuario) REFERENCES Relatorio_Acompanhamento (Prontuario)
+) DEFAULT charset = utf8;
+
+CREATE TABLE IF NOT EXISTS Consulta (
+    Cod_Consulta int PRIMARY KEY auto_increment not null,
+    DtaConsulta date,
+    Cod_Paciente int,
+    Cod_agendamento int,
+    Cod_Profissional int,
+    FOREIGN KEY(Cod_Paciente) REFERENCES Paciente (Cod_Paciente),
+    FOREIGN KEY(Cod_agendamento) REFERENCES Agenda (Cod_agendamento),
+    FOREIGN KEY(Cod_Profissional) REFERENCES Profissional_Saude (Cod_Profissional)
+) DEFAULT charset = utf8;
+
+ALTER TABLE Enfermeiro ADD FOREIGN KEY(Cod_Profissional) REFERENCES Profissional_Saude (Cod_Profissional)
+ALTER TABLE Agenda ADD FOREIGN KEY(Cod_Recepcao) REFERENCES Recepcao (Cod_Recepcao)
+ALTER TABLE Fisioterapetuta ADD FOREIGN KEY(Cod_Profissional) REFERENCES Profissional_Saude (Cod_Profissional)

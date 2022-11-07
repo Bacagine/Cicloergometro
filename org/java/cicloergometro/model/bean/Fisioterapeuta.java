@@ -19,6 +19,10 @@ public class Fisioterapeuta extends ProfissionalDeSaude{
 		super(login, senha, nome, CPF, sexo);
 	}
 
+    public Fisioterapeuta(String nome) {
+        this.setNome(nome);
+    }
+
     public int getCodFisioterapeuta(){
         return this.codFisioterapeuta;
     }

@@ -3,7 +3,7 @@
  * Desenvolvido por Gustavo Bacagine <gustavo.bacagine@protonmail.com> 
  * 
  * Data: 18/10/2022
- * Data da última modificação: 25/10/2022
+ * Data da última modificação: 07/11/2022
  */
 
 package org.java.cicloergometro.model.bean;
@@ -17,6 +17,14 @@ public class Paciente extends Pessoa{
 
     public Paciente(String login, String senha, String nome, String CPF, char sexo, String telefone, Endereco endereco){
         super(login, senha, nome, CPF, sexo, telefone, endereco);
+    }
+
+    public int getCodPaciente(){
+        return this.codPaciente;
+    }
+
+    public void setCodPaciente(int codPaciente){
+        this.codPaciente = codPaciente;
     }
 
     @Override

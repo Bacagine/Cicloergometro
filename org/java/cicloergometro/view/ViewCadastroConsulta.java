@@ -2,10 +2,10 @@ package org.java.cicloergometro.view;
 
 import java.awt.event.ActionListener;
 import java.text.ParseException;
-import java.time.LocalDate;
-import java.time.LocalTime;
+//import java.time.LocalDate;
+//import java.time.LocalTime;
 import java.awt.event.ActionEvent;
-import javax.swing.ButtonGroup;
+//import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
@@ -13,16 +13,16 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JPasswordField;
-import javax.swing.JRadioButton;
+//import javax.swing.JPasswordField;
+//import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 import javax.swing.text.MaskFormatter;
 
 import org.java.cicloergometro.model.bean.Consulta;
 import org.java.cicloergometro.model.bean.Endereco;
-import org.java.cicloergometro.model.bean.Medico;
-import org.java.cicloergometro.model.bean.Paciente;
+import org.java.cicloergometro.model.bean.Fisioterapeuta;
+//import org.java.cicloergometro.model.bean.Paciente;
 import org.java.cicloergometro.model.bean.Pessoa;
 
 public class ViewCadastroConsulta {
@@ -33,7 +33,7 @@ public class ViewCadastroConsulta {
     private JLabel lblPaciente;
     private JLabel lblIdade;
     private JLabel lblCPF;
-    private JLabel lblMedico;
+    private JLabel lblFisioterapeuta;
     private JLabel lblCRM;
     private JLabel lblEspecialidade;
     private JLabel lblValor;
@@ -42,7 +42,7 @@ public class ViewCadastroConsulta {
     private JLabel lblObservacoes;
     private JTextField txtPaciente;
     private JTextField txtIdade;
-    private JTextField txtMedico;
+    private JTextField txtFisioterapeuta;
     private JTextField txtObservacoes;
     private JFormattedTextField txtValor;
     private JFormattedTextField txtData;
@@ -58,7 +58,7 @@ public class ViewCadastroConsulta {
                                                      "Psiquiatra", "Dermatologista", "Endocrinologista",
                                                      "Gastronomista", "Infectologista", "Neurologista",
                                                      "Pediatra", "Toxicologista", "Reumatologista" };
-    private static final double valores[] = {};
+//    private static final double valores[] = {};
     private static final int altura = 770;
     private static final int largura = 770;
 
@@ -123,13 +123,13 @@ public class ViewCadastroConsulta {
         txtIdade.setBounds(610, 20, 150, 25);
         panel.add(txtIdade);
 
-        lblMedico = new JLabel("Medico: ");
-        lblMedico.setBounds(10, 50, 160, 25);
-        panel.add(lblMedico);
+        lblFisioterapeuta = new JLabel("Fisioterapeuta: ");
+        lblFisioterapeuta.setBounds(10, 50, 160, 25);
+        panel.add(lblFisioterapeuta);
 
-        txtMedico = new JTextField();
-        txtMedico.setBounds(90, 50, 250, 25);
-        panel.add(txtMedico);
+        txtFisioterapeuta = new JTextField();
+        txtFisioterapeuta.setBounds(90, 50, 250, 25);
+        panel.add(txtFisioterapeuta);
 
         lblCRM = new JLabel("CRM: ");
         lblCRM.setBounds(350, 50, 160, 25);
@@ -224,20 +224,20 @@ public class ViewCadastroConsulta {
         txtIdade.setBounds(610, 20, 150, 25);
         panel.add(txtIdade);
 
-        lblMedico = new JLabel("Medico: ");
-        lblMedico.setBounds(10, 50, 160, 25);
-        panel.add(lblMedico);
+        lblFisioterapeuta = new JLabel("Fisioterapeuta: ");
+        lblFisioterapeuta.setBounds(10, 50, 160, 25);
+        panel.add(lblFisioterapeuta);
 
-        txtMedico = new JTextField(consulta.getMedico().getNome());
-        txtMedico.setBounds(90, 50, 250, 25);
-        panel.add(txtMedico);
-
+        txtFisioterapeuta = new JTextField(consulta.getFisioterapeuta().getNome());
+        txtFisioterapeuta.setBounds(90, 50, 250, 25);
+        panel.add(txtFisioterapeuta);
+/*
         lblCRM = new JLabel("CRM: ");
         lblCRM.setBounds(350, 50, 160, 25);
         panel.add(lblCRM);
 
         boxCRM = new JComboBox<String>(CRMs);
-        boxCRM.setSelectedItem(consulta.getMedico().getCRM());
+        boxCRM.setSelectedItem(consulta.getFisioterapeuta().getCRM());
         boxCRM.setBounds(390, 50, 100, 25);
         panel.add(boxCRM);
 
@@ -264,7 +264,7 @@ public class ViewCadastroConsulta {
         txtValor.setBounds(90, 80, 115, 25);
         txtValor.setText(String.valueOf(consulta.getValor()));
         panel.add(txtValor);
-
+*/
         lblData = new JLabel("Data: ");
         lblData.setBounds(350, 80, 100, 25);
         panel.add(lblData);
@@ -312,7 +312,7 @@ public class ViewCadastroConsulta {
                 if(e.getSource() == btnProximo){
                     if(txtPaciente.getText().isEmpty() ||
                        boxCPF.getSelectedItem().equals(CPFs[0]) ||
-                       txtIdade.getText().isEmpty() || txtMedico.getText().isEmpty() ||
+                       txtIdade.getText().isEmpty() || txtFisioterapeuta.getText().isEmpty() ||
                        boxCRM.getSelectedItem().equals(CRMs[0]) || boxEspecialidade.getSelectedItem().equals(especialidades[0]) ||
                        txtValor.getText().isEmpty() || txtData.getText().isEmpty() || txtHora.getText().isEmpty()){
                         JOptionPane.showMessageDialog(null, "Erro: Cheque os campos obrigatorios!", "ERRO", JOptionPane.ERROR_MESSAGE);
@@ -320,13 +320,13 @@ public class ViewCadastroConsulta {
                     else{
                         Consulta consulta = new Consulta();
                         String dataConsulta = Pessoa.converteData(txtData.getText());
-                        String especialidade = String.valueOf(boxEspecialidade.getSelectedItem());
+//                        String especialidade = String.valueOf(boxEspecialidade.getSelectedItem());
                         String CPF = String.valueOf(boxCPF.getSelectedItem());
-                        String CRM = String.valueOf(boxCRM.getSelectedItem());
-                        Medico medico = new Medico(txtMedico.getText(), CRM, especialidade);
+//                        String CRM = String.valueOf(boxCRM.getSelectedItem());
+                        Fisioterapeuta fisioterapeuta = new Fisioterapeuta(txtFisioterapeuta.getText());
 //                        Paciente paciente = new Paciente(txtPaciente.getText(), CPF);
 //                        paciente.setIdade(Integer.parseInt(txtIdade.getText()));
-//                        consulta = new Consulta(medico, paciente, LocalDate.parse(dataConsulta), LocalTime.parse(txtHora.getText()), especialidade, txtObservacoes.getText(), Double.parseDouble(txtValor.getText()));
+//                        consulta = new Consulta(fisioterapeuta, paciente, LocalDate.parse(dataConsulta), LocalTime.parse(txtHora.getText()), especialidade, txtObservacoes.getText(), Double.parseDouble(txtValor.getText()));
                         frame.dispose();
                         new ViewCadastroEndereco(consulta);
                     }
@@ -345,7 +345,7 @@ public class ViewCadastroConsulta {
                 if(e.getSource() == btnProximo){
                     if(txtPaciente.getText().isEmpty() ||
                        boxCPF.getSelectedItem().equals(CPFs[0]) ||
-                       txtIdade.getText().isEmpty() || txtMedico.getText().isEmpty() ||
+                       txtIdade.getText().isEmpty() || txtFisioterapeuta.getText().isEmpty() ||
                        boxCRM.getSelectedItem().equals(CRMs[0]) || boxEspecialidade.getSelectedItem().equals(especialidades[0]) ||
                        txtValor.getText().isEmpty() || txtData.getText().isEmpty() || txtHora.getText().isEmpty()){
                         JOptionPane.showMessageDialog(null, "Erro: Cheque os campos obrigatorios!", "ERRO", JOptionPane.ERROR_MESSAGE);
@@ -353,12 +353,12 @@ public class ViewCadastroConsulta {
                     else{
                         Consulta consulta = new Consulta();
                         String dataConsulta = Pessoa.converteData(txtData.getText());
-                        String especialidade = String.valueOf(boxEspecialidade.getSelectedItem());
+//                        String especialidade = String.valueOf(boxEspecialidade.getSelectedItem());
                         String CPF = String.valueOf(boxCPF.getSelectedItem());
-                        String CRM = String.valueOf(boxCRM.getSelectedItem());
-                        Medico medico = new Medico(txtMedico.getText(), CRM, especialidade);
+//                        String CRM = String.valueOf(boxCRM.getSelectedItem());
+                        Fisioterapeuta fisioterapeuta = new Fisioterapeuta(txtFisioterapeuta.getText());
 //                        Paciente paciente = new Paciente(txtPaciente.getText(), CPF);
-//                        consulta = new Consulta(medico, paciente, LocalDate.parse(dataConsulta), LocalTime.parse(txtHora.getText()), especialidade, txtObservacoes.getText(), Double.parseDouble(txtValor.getText()));
+//                        consulta = new Consulta(fisioterapeuta, paciente, LocalDate.parse(dataConsulta), LocalTime.parse(txtHora.getText()), especialidade, txtObservacoes.getText(), Double.parseDouble(txtValor.getText()));
                         frame.dispose();
                         new ViewCadastroEndereco(consulta, endereco);
                     }

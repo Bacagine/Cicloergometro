@@ -3,7 +3,7 @@
  * Desenvolvido por Gustavo Bacagine <gustavo.bacagine@protonmail.com>
  * 
  * Data: 03/06/2022
- * Data da última modificação: 16/06/2022
+ * Data da última modificação: 07/11/2022
  */
 
 package org.java.cicloergometro.model.bean;
@@ -12,24 +12,24 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
  public class Consulta{
-	private int id;
-	private Medico medico;
+	private int codConsulta;
+	private Fisioterapeuta fisioterapeuta;
 	private Paciente paciente;
 	private LocalDate data;
 	private LocalTime hora;
-	private String especializacaoMedica;
+//	private String especializacaoMedica;
 	private Endereco endereco;
 	private String observacoes;
-	private double valor;
+//	private double valor;
 
 	/* Construtores */
 	public Consulta(){
 
 	}
 /*
-	public Consulta(Medico medico, Paciente paciente, LocalDate data,
+	public Consulta(Fisioterapeuta fisioterapeuta, Paciente paciente, LocalDate data,
 			LocalTime hora, String especializacaoMedica, Endereco endereco, double valor){
-		this.setMedico(medico);
+		this.setFisioterapeuta(fisioterapeuta);
 		this.setPaciente(paciente);
 		this.setData(data);
 		this.setHora(hora);
@@ -38,38 +38,38 @@ import java.time.LocalTime;
 		this.setValor(valor);
 	}
 */
-	public Consulta(Medico medico, Paciente paciente, LocalDate data,
+	public Consulta(Fisioterapeuta fisioterapeuta, Paciente paciente, LocalDate data,
 			LocalTime hora, String especializacaoMedica, Endereco endereco, String observacoes, double valor){
-		this.setMedico(medico);
+		this.setFisioterapeuta(fisioterapeuta);
 		this.setPaciente(paciente);
 		this.setData(data);
 		this.setHora(hora);
-		this.setEspecializacaoMedica(especializacaoMedica);
+//		this.setEspecializacaoMedica(especializacaoMedica);
 		this.setEndereco(endereco);
 		this.setObservacoes(observacoes);
-		this.setValor(valor);
+//		this.setValor(valor);
 	}
 
 	
 
-	public Consulta(Medico medico, Paciente paciente, LocalDate data, LocalTime hora, String especialidade,
+	public Consulta(Fisioterapeuta fisioterapeuta, Paciente paciente, LocalDate data, LocalTime hora, String especialidade,
             String observacao, double valor){
-		this.setMedico(medico);
+		this.setFisioterapeuta(fisioterapeuta);
 		this.setPaciente(paciente);
 		this.setData(data);
 		this.setHora(hora);
-		this.setEspecializacaoMedica(especializacaoMedica);
+//		this.setEspecializacaoMedica(especializacaoMedica);
 		this.setObservacoes(observacoes);
-		this.setValor(valor);
+//		this.setValor(valor);
     }
 
     /* Getters */
-	public int getID(){
-		return this.id;
+	public int getCodConsulta(){
+		return this.codConsulta;
 	}
 
-	public Medico getMedico(){
-		return this.medico;
+	public Fisioterapeuta getFisioterapeuta(){
+		return this.fisioterapeuta;
 	}
 
 	public Paciente getPaciente(){
@@ -83,11 +83,11 @@ import java.time.LocalTime;
 	public LocalTime getHora(){
 		return this.hora;
 	}
-
+/*
 	public String getEspecializacaoMedica(){
 		return this.especializacaoMedica;
 	}
-
+*/
 	public Endereco getEndereco(){
 		return this.endereco;
 	}
@@ -95,18 +95,18 @@ import java.time.LocalTime;
 	public String getObservacoes(){
 		return this.observacoes;
 	}
-
+/*
 	public double getValor(){
 		return this.valor;
 	}
-
+*/
 	/* Setters */
-	public void setID(int id){
-		this.id = id;
+	public void setCodConsulta(int codConsulta){
+		this.codConsulta = codConsulta;
 	}
 
-	public void setMedico(Medico medico){
-		this.medico = medico;
+	public void setFisioterapeuta(Fisioterapeuta fisioterapeuta){
+		this.fisioterapeuta = fisioterapeuta;
 	}
 
 	public void setPaciente(Paciente paciente){
@@ -120,11 +120,11 @@ import java.time.LocalTime;
 	public void setHora(LocalTime hora){
 		this.hora = hora;
 	}
-
+/*
 	public void setEspecializacaoMedica(String especializacaoMedica){
 		this.especializacaoMedica = especializacaoMedica;
 	}
-
+*/
 	public void setEndereco(Endereco endereco){
 		this.endereco = endereco;
 	}
@@ -132,18 +132,18 @@ import java.time.LocalTime;
 	public void setObservacoes(String observacoes){
 		this.observacoes = observacoes;
 	}
-
+/*
 	public void setValor(double valor){
 		this.valor = valor;
 	}
-
+*/
 	@Override
 	public String toString(){
 		String aux = "Paciente.....: " + this.paciente.getNome() + " Idade: " + this.paciente.getIdade();
         aux += "\nData.........: " + this.data.getDayOfMonth() + "/" + this.data.getMonthValue() + "/" + this.data.getYear();
         aux += "\nHora.........: " + this.getHora();
-        aux += "\nMedico.......: " + this.getMedico();
-		aux += "\nEspecialidade: " + this.getEspecializacaoMedica();
+        aux += "\nFisioterapeuta.......: " + this.getFisioterapeuta();
+//		aux += "\nEspecialidade: " + this.getEspecializacaoMedica();
 		if(this.getObservacoes() != null){
 			aux += "\nObservações....: " + this.getObservacoes();
 		}

@@ -3,7 +3,7 @@
  * Desenvolvido por Gustavo Bacagine <gustavo.bacagine@protonmail.com>
  * 
  * Data: 18/10/2022
- * Data da última modificação: 25/10/2022
+ * Data da última modificação: 07/11/2022
  */
 
 package org.java.cicloergometro.model.bean;
@@ -28,6 +28,10 @@ public class Agenda{
     }
 
     /* Getters */
+    public int getCodAgenda(){
+        return this.codAgenda;
+    }
+
     public LocalDate getData(){
         return this.data;
     }
@@ -41,6 +45,10 @@ public class Agenda{
     }
 
     /* Setters */
+    public void setCodAgenda(int codAgenda){
+        this.codAgenda = codAgenda;
+    }
+    
     public void setData(LocalDate data){
         this.data = data;
     }
