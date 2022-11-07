@@ -18,12 +18,16 @@ CREATE DATABASE cicloergometro;
 USE cicloergometro;
 
 CREATE TABLE IF NOT EXISTS Enfermeiro (
+    login Varchar(8) not null,
+    senha Varchar(8) not null,
     Cod_Enfermeiro int PRIMARY KEY auto_increment not null,
     Especializacao Varchar(150) not null,
     Cod_Profissional int
 ) DEFAULT charset = utf8;
 
 CREATE TABLE IF NOT EXISTS Paciente (
+    login Varchar(8) not null,
+    senha Varchar(8) not null,
     CPF Varchar(11) not null,
     Nome Varchar(150) not null,
     Cod_Paciente int PRIMARY KEY  auto_increment not null,
@@ -55,13 +59,17 @@ CREATE TABLE IF NOT EXISTS Recepcao (
     Cod_Recepcionista int
 ) DEFAULT charset = utf8;
 
-CREATE TABLE IF NOT EXISTS Fisioterapetuta (
+CREATE TABLE IF NOT EXISTS Fisioterapeuta (
+    login Varchar(8) not null,
+    senha Varchar(8) not null,
     Cod_Fisioterapeuta int PRIMARY KEY auto_increment not null,
     Especializacao Varchar(150),
     Cod_Profissional int
 ) DEFAULT charset = utf8;
 
 CREATE TABLE IF NOT EXISTS Profissional_Saude (
+    login Varchar(8) not null,
+    senha Varchar(8) not null,
     Nome Varchar(150),
     Cod_Profissional int PRIMARY KEY auto_increment not null,
     Cod_Recepcao int,
@@ -97,4 +105,7 @@ CREATE TABLE IF NOT EXISTS Consulta (
 
 ALTER TABLE Enfermeiro ADD FOREIGN KEY(Cod_Profissional) REFERENCES Profissional_Saude (Cod_Profissional)
 ALTER TABLE Agenda ADD FOREIGN KEY(Cod_Recepcao) REFERENCES Recepcao (Cod_Recepcao)
-ALTER TABLE Fisioterapetuta ADD FOREIGN KEY(Cod_Profissional) REFERENCES Profissional_Saude (Cod_Profissional)
+ALTER TABLE Fisioterapeuta ADD FOREIGN KEY(Cod_Profissional) REFERENCES Profissional_Saude (Cod_Profissional)
+
+INSERT INTO Paciente(login, senha, CPF, Nome, Telefone, sexo) VALUES ('jose', '123', '123456789101', 'Jose','+551136869654','M')
+INSERT INTO Fisioterapeuta(login, senha, Especializacao) VALUES('fisio', '123', 'especializacao')

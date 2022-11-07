@@ -8,7 +8,7 @@
 
 package org.java.cicloergometro.view;
 
-//import org.java.cicloergometro.model.dao.LoginDAO; // Usado para verificar o login
+import org.java.cicloergometro.model.dao.LoginDAO; // Usado para verificar o login
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.ButtonGroup;
@@ -40,13 +40,13 @@ public class ViewMain{
     private JRadioButton optPaciente;
     private JRadioButton optRecepcionista;
     private ButtonGroup grupo; // Leia o comentario da linha 91
-    //private LoginDAO loginDAO = new LoginDAO();
+    private LoginDAO loginDAO = new LoginDAO();
     private static final int altura = 500;
     private static final int largura = 550;
     private static final String titulo = "Login";
-/*    private static final String tiposUsuario[] = { "Medico", "Enfermeiro", "Fisioterapeuta", 
+    private static final String tiposUsuario[] = { "Medico", "Enfermeiro", "Fisioterapeuta", 
                                                    "Recepcionista", "Paciente" };
-*/
+
     /* Construtor */
     public ViewMain(){
         frame = new JFrame();
@@ -116,28 +116,28 @@ public class ViewMain{
                         JOptionPane.showMessageDialog(null, "Erro: Selecione o tipo de login", "ERRO!", JOptionPane.ERROR_MESSAGE);
                     }
                     /* Verifica se o usuario e senha são validos */
-//                    else if(optMedico.isSelected() && loginDAO.verificaLogin(tiposUsuario[0], txtUsuario.getText(), String.valueOf(txtSenha.getPassword()))){
-                    else if(optMedico.isSelected() && String.valueOf(txtSenha.getPassword()).equals("123")){
+                    else if(optMedico.isSelected() && loginDAO.verificaLogin(tiposUsuario[0], txtUsuario.getText(), String.valueOf(txtSenha.getPassword()))){
+//                    else if(optMedico.isSelected() && String.valueOf(txtSenha.getPassword()).equals("123")){
                         frame.dispose();
                         new ViewMedico();
                     }
-//                    else if(optEnfermeiro.isSelected() && loginDAO.verificaLogin(tiposUsuario[1], txtUsuario.getText(), String.valueOf(txtSenha.getPassword()))){
-                    else if(optEnfermeiro.isSelected() && String.valueOf(txtSenha.getPassword()).equals("123")){
+                    else if(optEnfermeiro.isSelected() && loginDAO.verificaLogin(tiposUsuario[1], txtUsuario.getText(), String.valueOf(txtSenha.getPassword()))){
+//                    else if(optEnfermeiro.isSelected() && String.valueOf(txtSenha.getPassword()).equals("123")){
                         frame.dispose();
                         new ViewEnfermeiro();
                     }
-//                    else if(optFisioterapeuta.isSelected() && loginDAO.verificaLogin(tiposUsuario[2], txtUsuario.getText(), String.valueOf(txtSenha.getPassword()))){
-                    else if(optFisioterapeuta.isSelected() && String.valueOf(txtSenha.getPassword()).equals("123")){
+                    else if(optFisioterapeuta.isSelected() && loginDAO.verificaLogin(tiposUsuario[2], txtUsuario.getText(), String.valueOf(txtSenha.getPassword()))){
+//                    else if(optFisioterapeuta.isSelected() && String.valueOf(txtSenha.getPassword()).equals("123")){
                         frame.dispose();
                         new ViewFisioterapeuta();
                     }
-//                    else if(optMedico.isSelected() && loginDAO.verificaLogin(tiposUsuario[3], txtUsuario.getText(), String.valueOf(txtSenha.getPassword()))){
-                    else if(optRecepcionista.isSelected() && String.valueOf(txtSenha.getPassword()).equals("123")){
+                    else if(optMedico.isSelected() && loginDAO.verificaLogin(tiposUsuario[3], txtUsuario.getText(), String.valueOf(txtSenha.getPassword()))){
+//                    else if(optRecepcionista.isSelected() && String.valueOf(txtSenha.getPassword()).equals("123")){
                         frame.dispose();
                         new ViewRecepcao();
                     }
-//                    else if(optPaciente.isSelected() && loginDAO.verificaLogin(tiposUsuario[4], txtUsuario.getText(), String.valueOf(txtSenha.getPassword()))){
-                    else if(optPaciente.isSelected() && String.valueOf(txtSenha.getPassword()).equals("123")){
+                    else if(optPaciente.isSelected() && loginDAO.verificaLogin(tiposUsuario[4], txtUsuario.getText(), String.valueOf(txtSenha.getPassword()))){
+//                    else if(optPaciente.isSelected() && String.valueOf(txtSenha.getPassword()).equals("123")){
                         frame.dispose();
                         new ViewPaciente();
                     }

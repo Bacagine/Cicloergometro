@@ -53,7 +53,7 @@ public class ViewFisioterapeuta {
             public void actionPerformed(ActionEvent e){
                 if(e.getSource() == btnAgendarConsultas){
                     frame.dispose();
-//                    new ViewAgendarConsulta();
+                    new ViewAgendarConsulta();
                 }
             }
         });
