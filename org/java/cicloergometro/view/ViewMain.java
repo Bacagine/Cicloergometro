@@ -40,13 +40,13 @@ public class ViewMain{
     private JRadioButton optPaciente;
     private JRadioButton optRecepcionista;
     private ButtonGroup grupo; // Leia o comentario da linha 91
-    private LoginDAO loginDAO = new LoginDAO();
+    //private LoginDAO loginDAO = new LoginDAO();
     private static final int altura = 500;
     private static final int largura = 550;
     private static final String titulo = "Login";
-    private static final String tiposUsuario[] = { "Medico", "Enfermeiro", "Fisioterapeuta", 
+/*    private static final String tiposUsuario[] = { "Medico", "Enfermeiro", "Fisioterapeuta", 
                                                    "Recepcionista", "Paciente" };
-
+*/
     /* Construtor */
     public ViewMain(){
         frame = new JFrame();

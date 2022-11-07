@@ -1,4 +1,4 @@
-/* ViewContaMedico.java: Tela com as configurações da conta do medico
+/* ViewContaMedico.java: Tela com as configurações da conta do fisioterapeuta
  * 
  * Desenvolvido por Gustavo Bacagine <gustavo.bacagine@protonmail.com>
  * 
@@ -7,6 +7,6 @@
 
 package org.java.cicloergometro.view;
 
-public class ViewContaMedico {
+public class ViewContaFisioterapeuta {
 
 }
