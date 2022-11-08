@@ -31,7 +31,7 @@ public class ConnectionFactory {
             return DriverManager.getConnection(url, user, password);
         }
         catch(ClassNotFoundException | SQLException e){
-            //Logger.getLogger(ConnectionFactory.class.getName()).log(Level.server, null, e);
+            Logger.getLogger(ConnectionFactory.class.getName()).log(Level.SEVERE, null, e);
             throw new RuntimeException("Erro na conexao: ", e);
         }
     }

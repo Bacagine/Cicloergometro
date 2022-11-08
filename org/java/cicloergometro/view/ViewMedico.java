@@ -65,7 +65,7 @@ public class ViewMedico {
             public void actionPerformed(ActionEvent e){
                 if(e.getSource() == btnMinhaConta){
                     frame.dispose();
-                    new ViewContaFisioterapeuta();
+                    new ViewContaMedico();
                 }
             }
         });
