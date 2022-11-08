@@ -38,7 +38,7 @@ public class ViewMain{
     private JRadioButton optEnfermeiro;
     private JRadioButton optFisioterapeuta;
     private JRadioButton optPaciente;
-    private JRadioButton optRecepcionista;
+//    private JRadioButton optRecepcionista;
     private ButtonGroup grupo; // Leia o comentario da linha 91
     private LoginDAO loginDAO = new LoginDAO();
     private static final int altura = 500;

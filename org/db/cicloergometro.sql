@@ -2,7 +2,7 @@
  * do cicloergometro
  * 
  * Desenvolvedores: Gustavo Bacagine <gustavo.bacagine@protonmail.com>
- *                  Adrian
+ *                  Adrian Gonçalves Amazonas
  * 
  * Data: 18/10/2022
  * Data da última modificação: 07/11/2022
@@ -16,14 +16,6 @@ CREATE DATABASE cicloergometro;
 
 /* usando o banco de dados */
 USE cicloergometro;
-
-CREATE TABLE IF NOT EXISTS Enfermeiro (
-    login Varchar(8) not null,
-    passwd Varchar(8) not null,
-    Cod_Enfermeiro int PRIMARY KEY auto_increment not null,
-    Especializacao Varchar(150) not null,
-    Cod_Profissional int
-) DEFAULT charset = utf8;
 
 CREATE TABLE IF NOT EXISTS Paciente (
     login Varchar(8) not null,
@@ -67,11 +59,12 @@ CREATE TABLE IF NOT EXISTS Fisioterapeuta (
     Cod_Profissional int
 ) DEFAULT charset = utf8;
 
-CREATE TABLE IF NOT EXISTS Profissional_Saude (
+CREATE TABLE IF NOT EXISTS Medico (
     login Varchar(8) not null,
     passwd Varchar(8) not null,
     Nome Varchar(150),
     Cod_Profissional int PRIMARY KEY auto_increment not null,
+    CRM varchar(15),
     Cod_Recepcao int,
     FOREIGN KEY(Cod_Recepcao) REFERENCES Recepcao (Cod_Recepcao)
 ) DEFAULT charset = utf8;
@@ -81,12 +74,13 @@ CREATE TABLE IF NOT EXISTS Endereco (
     Logradouro Varchar(200) not null,
     Numero Varchar(4) not null,
     Cidade Varchar(150) not null,
-    Bairo Varchar(150) not null
+    Bairo Varchar(150) not null,
+    CEP varchar(10) not null
 ) DEFAULT charset = utf8;
 
 CREATE TABLE IF NOT EXISTS encaminha_monitoramento (
     Cod_Profissional int,
-    Prontuario int,
+    Cod_Acompanhametno int auto_increment not null,
     Cod_Monitoramento int PRIMARY KEY auto_increment not null,
     FOREIGN KEY(Cod_Profissional) REFERENCES Profissional_Saude (Cod_Profissional),
     FOREIGN KEY(Prontuario) REFERENCES Relatorio_Acompanhamento (Prontuario)
@@ -107,5 +101,5 @@ ALTER TABLE Enfermeiro ADD FOREIGN KEY(Cod_Profissional) REFERENCES Profissional
 ALTER TABLE Agenda ADD FOREIGN KEY(Cod_Recepcao) REFERENCES Recepcao (Cod_Recepcao);
 ALTER TABLE Fisioterapeuta ADD FOREIGN KEY(Cod_Profissional) REFERENCES Profissional_Saude (Cod_Profissional);
 
-INSERT INTO Paciente(login, passwd, CPF, Nome, Telefone, sexo) VALUES ('jose', '123', '123456789101', 'Jose','+551136869654','M');
-INSERT INTO Fisioterapeuta(login, passwd, Especializacao) VALUES('fisio', '123', 'especializacao');
+INSERT INTO Paciente(login, passwd, CPF, Nome, Telefone, sexo) VALUES ("jose", "123", "123456789101", "Jose","+551136869654",'M');
+INSERT INTO Fisioterapeuta(login, passwd, Especializacao) VALUES("fisio", "123", "especializacao");
